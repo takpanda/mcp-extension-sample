@@ -1,0 +1,17 @@
+[
+  {
+    "type": "stdio",
+    "label": "ローカルPythonサーバー",
+    "command": "python3",
+    "args": ["server.py"],
+    "env": {"ENV": "dev"},
+    "version": "1.0.0"
+  },
+  {
+    "type": "http",
+    "label": "SSE/HTTPサーバー",
+    "uri": "http://localhost:3000/sse",
+    "headers": {"Authorization": "Bearer YOUR_TOKEN"},
+    "version": "1.0.0"
+  }
+]

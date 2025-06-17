@@ -41,7 +41,24 @@ export function activate(context: vscode.ExtensionContext) {
 				}
 
 				for (const server of s) {
-					output.push(new vscode.McpStdioServerDefinition(server.label, server.command, server.args, server.env));
+					if (server.type === 'http' || server.type === 'sse') {
+						// HTTP/SSEサーバー定義
+						output.push(new vscode.McpHttpServerDefinition(
+							server.label,
+							vscode.Uri.parse(server.uri),
+							server.headers || {},
+							server.version
+						));
+					} else {
+						// Stdioサーバー定義（従来通り）
+						output.push(new vscode.McpStdioServerDefinition(
+							server.label,
+							server.command,
+							server.args,
+							server.env,
+							server.version
+						));
+					}
 				}
 			})));
 
