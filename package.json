@@ -23,6 +23,11 @@
 			{
 				"command": "mcp-extension-sample.removeGist",
 				"title": "MCP Extension Sample: Remove Gist Source"
+			},
+			{
+				"command": "mcp-extension-sample.refresh",
+				"title": "Refresh",
+				"icon": "$(refresh)"
 			}
 		],
 		"viewsContainers": {
@@ -30,7 +35,7 @@
 				{
 					"id": "mcpExtensionSample",
 					"title": "MCP Extension Sample",
-					"icon": "$(gear)"
+					"icon": "$(radio-tower)"
 				}
 			]
 		},
@@ -39,7 +44,7 @@
 				{
 					"id": "mcpExtensionSampleView",
 					"name": "MCP Extension Sample",
-					"icon": "$(gear)"
+					"icon": "$(radio-tower)"
 				}
 			]
 		},
@@ -48,7 +53,16 @@
 				"id": "exampleGist",
 				"label": "Github Gists"
 			}
-		]
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "mcp-extension-sample.refresh",
+					"when": "view == mcpExtensionSampleView",
+					"group": "navigation"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

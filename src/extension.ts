@@ -36,6 +36,11 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	}));
 
+	context.subscriptions.push(vscode.commands.registerCommand('mcp-extension-sample.refresh', () => {
+		treeDataProvider.refresh();
+		didChangeEmitter.fire();
+	}));
+
 	context.subscriptions.push(vscode.lm.registerMcpServerDefinitionProvider('exampleGist', {
 		onDidChangeMcpServerDefinitions: didChangeEmitter.event,
 		provideMcpServerDefinitions: async () => {
@@ -153,6 +158,11 @@ class McpTreeDataProvider implements vscode.TreeDataProvider<McpTreeItem> {
 
 	updateUrls(urls: string[]): void {
 		this.urls = urls;
+		this._onDidChangeTreeData.fire();
+	}
+
+	refresh(): void {
+		this.serverInfoCache.clear();
 		this._onDidChangeTreeData.fire();
 	}
 
