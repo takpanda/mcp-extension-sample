@@ -1,0 +1,12 @@
+  [
+    {
+      "type": "http",
+      "label": "My HTTP MCP Server",
+      "uri": "http://pi5-3.local/e/aytrklpsx5hl4gag/mcp",
+      "headers": {
+        "Authorization": "Bearer your-token-here",
+        "Content-Type": "application/json"
+      },
+      "version": "1.0"
+    }
+  ]
